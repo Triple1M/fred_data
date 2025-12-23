@@ -266,12 +266,12 @@ def _cache_set(years: int, api_key: str, payload: Dict) -> None:
 app = FastAPI(title="FRED Monthly Panel API", version="1.0.0")
 
 
-@app.get("/health")
+@app.get("/api/fred_api/health")
 def health():
     return {"status": "ok"}
 
 
-@app.get("/fred/panel")
+@app.get("/api/fred_api/fred/panel")
 def fred_panel(
     years: int = Query(20, ge=1, le=60, description="Lookback window in years"),
     api_key: Optional[str] = Query(None, description="FRED API key; if omitted uses env FRED_API_KEY"),
